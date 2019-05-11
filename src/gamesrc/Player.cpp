@@ -1,7 +1,9 @@
+/*
+* Nome: Marlon Baptista de Quadros
+*/
 #include "include/Player.hpp"
 
-namespace cgf
-{
+namespace cgf{
 	Player::Player(char* local_image, int x, int y, int id, int velocidade){
 		sprite.load(local_image);
 		sprite.setPosition(x, y);

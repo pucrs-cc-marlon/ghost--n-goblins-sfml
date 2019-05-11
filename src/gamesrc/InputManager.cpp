@@ -1,35 +1,36 @@
+/*
+* Nome: Marlon Baptista de Quadros
+*/
 #include "include/InputManager.hpp"
 
-namespace cgf
+namespace cgf{
 
-{
+    InputManager InputManager::m_InputManager;
 
-InputManager InputManager::m_InputManager;
+    void InputManager::addKeyInput(sf::String name, sf::Keyboard::Key keyCode)
+    {
+        MyKeys key;
+        key.myInputType = KeyboardInput;
+        key.myKeyCode   = keyCode;
+        keys[name] = key;
+    }
 
-void InputManager::addKeyInput(sf::String name, sf::Keyboard::Key keyCode)
-{
-    MyKeys key;
-    key.myInputType = KeyboardInput;
-    key.myKeyCode   = keyCode;
-    keys[name] = key;
-}
+    bool InputManager::testEvent(sf::String name)
+    {
+        mapT::iterator it = keys.find(name);
+        if(it == keys.end())
+            return false; // no such binding
 
-bool InputManager::testEvent(sf::String name)
-{
-    mapT::iterator it = keys.find(name);
-    if(it == keys.end())
-        return false; // no such binding
+        // Get iterator contents
+        MyKeys k = it->second;
 
-    // Get iterator contents
-    MyKeys k = it->second;
+        // Keyboard event
+        if (k.myInputType == KeyboardInput &&
+            sf::Keyboard::isKeyPressed(k.myKeyCode))
+                return true;
 
-    // Keyboard event
-    if (k.myInputType == KeyboardInput &&
-        sf::Keyboard::isKeyPressed(k.myKeyCode))
-            return true;
-
-    // Binding type doesn't match
-    return false;
-}
+        // Binding type doesn't match
+        return false;
+    }
 
 } // namespace

@@ -1,3 +1,6 @@
+/*
+* Nome: Marlon Baptista de Quadros
+*/
 #ifndef CGF_PLAYER_H_
 #define CGF_PLAYER_H_
 

@@ -1,3 +1,6 @@
+/*
+* Nome: Marlon Baptista de Quadros
+*/
 #include "Game.hpp"
 
 #ifndef GAME_STATE_H_

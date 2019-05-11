@@ -1,9 +1,11 @@
+/*
+* Nome: Marlon Baptista de Quadros
+*/
 #include "include/FirstMap.hpp"
 #include "include/InputManager.hpp"
 #include <iostream>
 
-namespace cgf
-{
+namespace cgf{
 
 	FirstMap FirstMap::m_FirstMap;
 

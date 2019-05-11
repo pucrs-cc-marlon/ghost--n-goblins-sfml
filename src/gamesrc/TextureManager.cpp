@@ -1,8 +1,10 @@
+/*
+* Nome: Marlon Baptista de Quadros
+*/
 #include "include/TextureManager.hpp"
 #include <iostream>
 
-namespace cgf
-{
+namespace cgf{
 
     using namespace std;
 

@@ -1,3 +1,6 @@
+/*
+* Nome: Marlon Baptista de Quadros
+*/
 #ifndef PRECOMPILED_HEADER_HPP
 #define PRECOMPILED_HEADER_HPP
 

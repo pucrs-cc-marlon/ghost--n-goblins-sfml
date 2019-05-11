@@ -1,3 +1,6 @@
+/*
+* Nome: Marlon Baptista de Quadros
+*/
 #ifndef PLAY_PHYSICS_H_
 #define PLAY_PHYSICS_H_
 
@@ -6,8 +9,7 @@
 #include "Sprite.hpp"
 #include "Player.hpp"
 
-namespace cgf
-{
+namespace cgf{
     class FirstMap : public cgf::GameState
     {
         public:

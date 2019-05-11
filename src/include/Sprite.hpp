@@ -1,10 +1,6 @@
 /*
- *  Sprite.h
- *  Static sprite class
- *
- *  Created by Marcelo Cohen on 10/13.
- *
- */
+* Nome: Marlon Baptista de Quadros
+*/
 
 #ifndef CGF_SPRITE_H
 #define CGF_SPRITE_H
@@ -18,8 +14,7 @@
 #include <SFML/System/Vector2.hpp>
 #include "TextureManager.hpp"
 
-namespace cgf
-{
+namespace cgf{
 
 class Sprite : public sf::Drawable, public sf::Transformable
 {

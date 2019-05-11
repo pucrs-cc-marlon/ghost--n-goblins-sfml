@@ -1,3 +1,6 @@
+/*
+* Nome: Marlon Baptista de Quadros
+*/
 #ifndef CGF_INPUT_MANAGER_H
 #define CGF_INPUT_MANAGER_H
 

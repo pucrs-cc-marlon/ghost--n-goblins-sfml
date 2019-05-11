@@ -1,3 +1,6 @@
+/*
+* Nome: Marlon Baptista de Quadros
+*/
 #ifndef CGF_TEXTUREMANAGER_H
 #define CGF_TEXTUREMANAGER_H
 
@@ -5,8 +8,7 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 
-namespace cgf
-{
+namespace cgf{
 
 class TextureManager
 {

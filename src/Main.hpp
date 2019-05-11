@@ -1,3 +1,6 @@
+/*
+* Nome: Marlon Baptista de Quadros
+*/
 #ifndef MAIN_HPP
 #define MAIN_HPP
 

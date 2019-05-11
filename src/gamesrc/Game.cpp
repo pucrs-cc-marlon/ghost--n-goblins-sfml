@@ -1,8 +1,10 @@
+/*
+* Nome: Marlon Baptista de Quadros
+*/
 #include "include/Game.hpp"
 #include "include/GameState.hpp"
 
-namespace cgf
-{
+namespace cgf{
 	using namespace std;
 
 	Game::Game(unsigned int minFPS, unsigned int maxFPS){

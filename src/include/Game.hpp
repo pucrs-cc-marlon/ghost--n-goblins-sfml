@@ -1,4 +1,6 @@
-
+/*
+* Nome: Marlon Baptista de Quadros
+*/
 #ifndef GAME_MAIN_H_
 #define GAME_MAIN_H_
 #include "Main.hpp"

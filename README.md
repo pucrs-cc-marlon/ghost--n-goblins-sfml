@@ -6,7 +6,7 @@ Projeto Ghost'n Goblins para a cadeira de [Entretenimento Digital](http://www.in
 
 ```
 Ghosts‘n Goblins se trata de um jogo 2D de plataforma. Originalmente a história acompanha o cavaleiro Sir Arthur, que tem a missão de resgatar a princesa e derrotar o vilão Satã.
-Nessa versão alternativa do jogo será contado a história de Selina, uma ladina, que busca riquezas em lugares abandonados pela humanidade, onde terá que enfrentar diversas criaturas aterrorizantes. Durante sua jornada, acaba saqueando um amuleto amaldiçoado pelo bruxo Garalan,
+Nessa versão alternativa do jogo será contado a história de Selina, uma ladina, que busca riquezas em lugares abandonados pela humanidade, onde terá que enfrentar diversas criaturas aterrorizantes. Durante sua jornada, acaba saqueando um amuleto amaldiçoado pelo bruxo Garalan e sua jornada será a busca para quebrar a maldição, sempre coletando mais riquezas e derrotando as terríveis criaturas.
 ```
 
 ## Recursos técnicos
