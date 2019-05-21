@@ -17,6 +17,7 @@ namespace cgf{
 		window = game->getWindow();
 
 		player = new Player("assets/hero.png", 50, window->getSize().y-50, 1, 10);
+		playerXML = new Player("assets/hero1.xml");
 	}
 
 	void FirstMap::handleEvents(cgf::Game* game){

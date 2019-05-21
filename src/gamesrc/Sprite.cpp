@@ -2,12 +2,14 @@
 * Nome: Marlon Baptista de Quadros
 */
 #include "include/Sprite.hpp"
+#include "include/tinyxml2.h"
 #include <iostream>
 #include <iomanip>
 #include <string>
 #include <cmath>
 
 using namespace std;
+using namespace tinyxml2;
 
 namespace cgf{
 
@@ -40,6 +42,37 @@ namespace cgf{
         cout << "image: " << rect.left << "," << rect.top
             << " - " << rect.width << "x" << rect.height << endl;
         updateRect();
+        return true;
+    }
+
+    bool Sprite::loadXML(char filename[]){
+        XMLDocument doc;
+        doc.LoadFile(filename);
+
+        int x = 0;
+        int y = 0;
+        int w = 0;
+        int h = 0;
+        int sprite_width = 0;
+        int sprite_height = 0;
+        const char* name = "";
+        const char* image_path = "";
+
+        XMLElement* element = doc.FirstChildElement( "TextureAtlas" );
+        element->QueryStringAttribute("imagePath", &image_path);
+        element->QueryAttribute("width", &sprite_width);
+        element->QueryAttribute("height", &sprite_height);
+
+        printf("File: %s - Width: %d - Height: %d \n", image_path, sprite_width, sprite_height);
+
+        for(const XMLElement* node=element->FirstChildElement(); node; node=node->NextSiblingElement()){
+            node->QueryStringAttribute("n", &name);
+            node->QueryAttribute("x", &x);
+            node->QueryAttribute("y", &y);
+            node->QueryAttribute("w", &w);
+            node->QueryAttribute("h", &h);
+            printf( "Name: %s - Attributes x: %d - y: %d - w: %d - h: %d \n", name, x, y, w, h );
+        }
         return true;
     }
 
@@ -132,18 +165,18 @@ namespace cgf{
     // Check circle collision between this and other sprite
     bool Sprite::circleCollision(Sprite& other)
     {
-    int radius1 = max(this->spriteW, this->spriteH)/2;
-    int radius2 = max(other.spriteW, other.spriteW)/2;
-    radius1 *= this->getScale().x;
-    radius2 *= other.getScale().y;
-    float px1 = this->getPosition().x;
-    float px2 = other.getPosition().x;
-    float py1 = this->getPosition().y;
-    float py2 = other.getPosition().y;
-    float dist = sqrt(pow(px1 - px2, 2) + pow(py1 - py2, 2));
-    //cout << "Radius: " << radius1 << " and " << radius2 << endl;
-    //cout << "distance: " << dist << endl;
-    return (dist < radius1 + radius2);
+        int radius1 = max(this->spriteW, this->spriteH)/2;
+        int radius2 = max(other.spriteW, other.spriteW)/2;
+        radius1 *= this->getScale().x;
+        radius2 *= other.getScale().y;
+        float px1 = this->getPosition().x;
+        float px2 = other.getPosition().x;
+        float py1 = this->getPosition().y;
+        float py2 = other.getPosition().y;
+        float dist = sqrt(pow(px1 - px2, 2) + pow(py1 - py2, 2));
+        //cout << "Radius: " << radius1 << " and " << radius2 << endl;
+        //cout << "distance: " << dist << endl;
+        return (dist < radius1 + radius2);
     }
 
     void Sprite::draw(sf::RenderTarget& target, sf::RenderStates states) const

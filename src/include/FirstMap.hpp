@@ -38,6 +38,7 @@ namespace cgf{
             cgf::InputManager* im;
 
             Player* player;
+            Player* playerXML;
             int x, y;
             int dirx, diry;
 
