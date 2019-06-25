@@ -45,6 +45,49 @@ namespace cgf{
         return true;
     }
 
+    bool Sprite::loadAnimation(char filename[]){
+        XMLDocument doc;
+        doc.LoadFile(filename);
+
+        const char* name = "";
+
+        int start = 0;
+        int end = 0;
+        bool loop = false;
+        const char* seqName = "";
+
+        XMLElement* element = doc.FirstChildElement( "animation" );
+        element->QueryStringAttribute("name", &name);
+        animationName = name;
+
+        printf("Animation Name: %s \n", name);
+
+        int cont = 0;
+
+        for(const XMLElement* node=element->FirstChildElement(); node; node=node->NextSiblingElement()){
+            AnimAttributes animAttr;
+            node->QueryStringAttribute("name", &seqName);
+            node->QueryAttribute("start", &start);
+            node->QueryAttribute("end", &end);
+            node->QueryAttribute("loop", &loop);
+
+            animAttr.name = seqName;
+            animAttr.start = start;
+            animAttr.end = end;
+            animAttr.loop = loop;
+
+            animations[seqName] = animAttr;
+
+            printf( "Name: %s - Attributes start: %d - end: %d - loop: %d \n",
+                        animations[seqName].name,
+                        animations[seqName].start,
+                        animations[seqName].end,
+                        animations[seqName].loop );
+            cont++;
+        }
+        return true;
+    }
+
     bool Sprite::loadXML(char filename[]){
         XMLDocument doc;
         doc.LoadFile(filename);
@@ -65,13 +108,27 @@ namespace cgf{
 
         printf("File: %s - Width: %d - Height: %d \n", image_path, sprite_width, sprite_height);
 
+        int cont = 0;
+
         for(const XMLElement* node=element->FirstChildElement(); node; node=node->NextSiblingElement()){
+            SpriteAttributes spriteAttr;
             node->QueryStringAttribute("n", &name);
             node->QueryAttribute("x", &x);
             node->QueryAttribute("y", &y);
             node->QueryAttribute("w", &w);
             node->QueryAttribute("h", &h);
-            printf( "Name: %s - Attributes x: %d - y: %d - w: %d - h: %d \n", name, x, y, w, h );
+            spriteAttr.x = x;
+            spriteAttr.y = y;
+            spriteAttr.width = w;
+            spriteAttr.height = h;
+            spritesAttr.push_back(spriteAttr);
+            printf( "Name: %s - Attributes x: %d - y: %d - w: %d - h: %d \n",
+                        name,
+                        spritesAttr[cont].x,
+                        spritesAttr[cont].y,
+                        spritesAttr[cont].width,
+                        spritesAttr[cont].height );
+            cont++;
         }
         return true;
     }

@@ -10,8 +10,9 @@ namespace cgf{
 		this->id = id;
 	}
 
-	Player::Player(char* local_xml){
+	Player::Player(char* local_xml, char* animation_xml){
 		sprite.loadXML(local_xml);
+		sprite.loadAnimation(animation_xml);
 	}
 
 	void Player::draw(sf::RenderWindow* window){

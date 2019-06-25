@@ -10,7 +10,7 @@ namespace cgf{
 	class Player{
 		public:
 			Player(char* local_image, int x, int y, int id, int velocidade);
-			Player(char* local_xml);
+			Player(char* local_xml, char* animation_xml);
             virtual void draw(sf::RenderWindow* screen);
             virtual void move(float dirx, float diry);
 			int getId() { return id; };

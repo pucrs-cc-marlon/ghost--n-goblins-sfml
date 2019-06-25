@@ -16,58 +16,77 @@
 
 namespace cgf{
 
-class Sprite : public sf::Drawable, public sf::Transformable
-{
-public:
-    Sprite();
-    virtual ~Sprite();
+    struct SpriteAttributes
+    {
+        int x;
+        int y;
+        int width;
+        int height;
+    };
 
-    bool load(char filename[]);
-    bool load(char filename[], int w, int h, int hSpace, int vSpace, int xIni, int yIni,
-                int column, int row, int total);
-    bool loadXML(char filename[]);
-    bool loadAnimation(char filename[]);
+    struct AnimAttributes
+    {
+        const char* name;
+        int start;
+        int end;
+        bool loop;
+    };
 
-    void setVisible(bool vis) { visible = vis; }
-    bool isVisible() { return visible; }
+    class Sprite : public sf::Drawable, public sf::Transformable{
+        public:
+            Sprite();
+            virtual ~Sprite();
 
-    // Mirroring (X-axis)
-    void setMirror(bool mirror) { this->mirror = mirror; }
-    bool getMirror() { return mirror; }
+            bool load(char filename[]);
+            bool load(char filename[], int w, int h, int hSpace, int vSpace, int xIni, int yIni,
+                        int column, int row, int total);
+            bool loadXML(char filename[]);
+            bool loadAnimation(char filename[]);
 
-    // Sprite speed
-    void setXspeed(double xspeed);
-    void setYspeed(double yspeed);
-    double getXspeed() { return xspeed; }
-    double getYspeed() { return yspeed; }
+            void setVisible(bool vis) { visible = vis; }
+            bool isVisible() { return visible; }
 
-    sf::Vector2u getSize() { return sf::Vector2u(spriteW, spriteH); }
+            // Mirroring (X-axis)
+            void setMirror(bool mirror) { this->mirror = mirror; }
+            bool getMirror() { return mirror; }
 
-    void update(double deltaTime, bool updatePos=true);
-    void updateRect();
+            // Sprite speed
+            void setXspeed(double xspeed);
+            void setYspeed(double yspeed);
+            double getXspeed() { return xspeed; }
+            double getYspeed() { return yspeed; }
 
-    // Basic collision checking
-    bool bboxCollision(Sprite& other);
-    bool circleCollision(Sprite& other);
+            sf::Vector2u getSize() { return sf::Vector2u(spriteW, spriteH); }
 
-private:
+            void update(double deltaTime, bool updatePos=true);
+            void updateRect();
 
-    static TextureManager* tm;
+            // Basic collision checking
+            bool bboxCollision(Sprite& other);
+            bool circleCollision(Sprite& other);
 
-    // Rendering
-    const sf::Texture* tex;
-    sf::IntRect rect;
-    sf::Vertex vertices[4];
-    int spriteW, spriteH;       // width and height of a single sprite frame
-    bool visible;
-    bool mirror;
+        private:
 
-    // Motion
-    double xspeed,yspeed;       // speed in pixels/s
-    int updateCount;            // current count of updates
+            static TextureManager* tm;
 
-    virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
-};
+            // Rendering
+            const sf::Texture* tex;
+            sf::IntRect rect;
+            sf::Vertex vertices[4];
+            int spriteW, spriteH;       // width and height of a single sprite frame
+            bool visible;
+            bool mirror;
+            std::vector<SpriteAttributes> spritesAttr;
+
+            std::string animationName;
+            std::map<std::string, AnimAttributes> animations;
+
+            // Motion
+            double xspeed,yspeed;       // speed in pixels/s
+            int updateCount;            // current count of updates
+
+            virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const;
+    };
 
 } // namespace cgf
 
